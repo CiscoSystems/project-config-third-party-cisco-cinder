@@ -1,5 +1,5 @@
 - project:
-    name: CiscoSystems/project-config-third-party-cinder
+    name: CiscoSystems/project-config-third-party-cisco-cinder
     jobtest:
       jobs:
         - dsvm-tempest-cisco-zonemanager-job
