@@ -1,0 +1,57 @@
+{# Macro for rendering out cherry pick commands #}
+{%- macro render_cherrypicks(cherrypicks) %}
+  {%- for version, projects in cherrypicks.items() %}
+    {%- if version == "all" or version in override_zuul_branch %}
+      {%- for project, patches in projects.items() %}
+        {{- "# Cherrypick pre-merge changes to %s\n" % project }}
+        {{- "(cd /opt/stack/new/%s" % project }}
+        {%- for patch in patches %}
+          {%- if "http" in patch %}
+            {{- " && \\\n git fetch {0} && git cherry-pick FETCH_HEAD".format((patch | trim)) }}
+          {%- else %}
+            {{- " && \\\n (git am {0} || git apply {0} || git cherry-pick --strategy recursive -Xtheirs {0})".format((patch | trim)) }}
+          {%- endif %}
+        {%- endfor %})
+        {{- "\n" }}
+      {%- endfor %}
+    {%- endif %}
+  {%- endfor %}
+{%- endmacro -%}
+
+function pre_test_hook {
+  # Ensure that we fail this function at the first error
+  set -o errtrace && trap "set +o errtrace && return 1" ERR
+
+{% if ansible_distribution == "CentOS" %}
+  # Hack the version of libvirt-python so its compatible with centos7
+  $ANSIBLE-playbook -i $WORKSPACE/inventory $WORKSPACE/fixup_centos_upperconstraints.yaml
+{% endif %}
+
+  $ANSIBLE all -i $WORKSPACE/inventory -m "shell" -a '
+  #########################################
+  # Default cherrypicks applied to all jobs
+  #########################################
+  {{ render_cherrypicks(default_openstack_project_cherrypicks) | indent(2) }}
+  #############################################
+  # Custom cherrypicks applied to only this job
+  #############################################
+  {{ render_cherrypicks(openstack_project_cherrypicks) | indent(2) }}'
+
+{% if custom_pre_test_hook_script %}
+
+  {{ custom_pre_test_hook_script | indent(2) }}
+{% endif %}
+}
+export -f pre_test_hook
+
+function post_test_hook {
+  # Ensure that we fail this function at the first error
+  set -o errtrace && trap "set +o errtrace && return 1" ERR
+
+  echo "Running post_test_hook"
+{% if custom_post_test_hook_script %}
+
+  {{ custom_post_test_hook_script | indent(2) }}
+{% endif %}
+}
+export -f post_test_hook

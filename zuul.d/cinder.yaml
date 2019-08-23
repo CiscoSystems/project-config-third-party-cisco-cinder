@@ -1,0 +1,13 @@
+---
+- job:
+    name: dsvm-tempest-cisco-zonemanager-job
+    parent: pctp-base-legacy
+    pre-run: playbooks/dsvm-tempest-cisco-zonemanager-vm-job-pre.yaml
+    run: playbooks/dsvm-tempest-cisco-zonemanager-vm-job.yaml
+    post-run:
+      - playbooks/dsvm-tempest-cisco-zonemanager-vm-job-post.yaml
+    vars:
+      override_zuul_branch: "{{ zuul.override_checkout | default ('') }}"
+    #override-checkout: master 
+    required-projects:
+      - openstack/cinder

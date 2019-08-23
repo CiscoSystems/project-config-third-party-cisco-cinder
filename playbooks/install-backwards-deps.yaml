@@ -1,0 +1,132 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Remove python3-pip
+      apt: 
+        name: python3-pip 
+        state: absent
+    - name: Install python and mySQL deps
+      package:
+        name: "{{ item }}"
+      with_items:
+        - "python-dev"
+        - "python3.6-dev"
+        - "python3.7-dev"
+        - "python3-pip"
+        - "python3-setuptools"
+        - "libmysqlclient-dev"
+
+    - name: Install qemu service
+      package:
+        name: "{{ item }}"
+      with_items:
+        - "qemu-system"
+        - "libvirt-bin"
+        - "libvirt-dev"
+
+    - name: Install mySQL for python
+      pip:
+        name: mysqlclient
+
+    - name: Install paramiko for python
+      pip:
+        name: paramiko
+
+    - name: Install mySQL for python3
+      pip:
+        name: mysqlclient
+        executable: pip3
+
+    - name: Install paramiko for python3
+      pip:
+        name: paramiko
+        executable: pip3
+
+    - name: Install storops for python3
+      pip:
+        name: storops
+        executable: pip3
+
+    - name: Install paramiko for python3.7
+      shell: /usr/bin/python3.7 -m pip install paramiko
+    - name: Install storops for python3.7
+      shell: /usr/bin/python3.7 -m pip install storops
+    - name: Install mysqlclient for python3.7
+      shell: /usr/bin/python3.7 -m pip install mysqlclient
+
+- hosts: primary
+  tasks:
+    - name: git clone devstack gate
+      git:
+        repo: http://opendev.org/openstack/devstack-gate
+        dest: "{{ workspace }}/devstack-gate"
+
+    - name: check existance of scripts directory
+      stat:
+        path: "{{ workspace }}/devstack-gate"
+
+    - name: check existance of script
+      stat:
+        path: "{{ workspace }}/devstack-gate/devstack-vm-gate-wrap.sh"
+
+- hosts: all
+  roles:
+    - role: fetch-zuul-cloner
+      destination: "/usr/zuul-env/bin/zuul-cloner"
+      repo_src_dir: "/home/ubuntu/src/opendev.org"
+  tasks:
+    - name: Create nodepool directory
+      file:
+        path: /etc/nodepool
+        state: directory
+        owner: ubuntu
+        group: ubuntu
+      become: true
+
+    - name: Create nodepool uuid file
+      copy:
+        dest: /etc/nodepool/uuid
+        content: |
+          {{ ansible_hostname | to_uuid }}
+
+    - name: Create nodepool sub_nodes file
+      copy:
+        dest: /etc/nodepool/sub_nodes
+        content: ""
+
+    - name: Create nodepool sub_nodes_private file
+      copy:
+        dest: /etc/nodepool/sub_nodes_private
+        content: ""
+
+    - name: Populate nodepool sub_nodes file
+      lineinfile:
+        path: /etc/nodepool/sub_nodes
+        line: "{{ hostvars[item]['nodepool']['public_ipv4'] }}"
+      with_items: "{{ groups['subnodes'] }}"
+      when: groups['subnodes'] is defined
+
+    - name: Populate nodepool sub_nodes_private file
+      lineinfile:
+        path: /etc/nodepool/sub_nodes_private
+        line: "{{ hostvars[item]['nodepool']['private_ipv4'] }}"
+      with_items: "{{ groups['subnodes'] }}"
+      when: groups['subnodes'] is defined
+
+    - name: Create nodepool primary file
+      copy:
+        dest: /etc/nodepool/primary_node_private
+        content: "{{ hostvars['primary']['nodepool']['private_ipv4'] }}"
+      when: hostvars['primary'] is defined
+
+    - name: Create nodepool node_private for this node
+      copy:
+        dest: /etc/nodepool/node_private
+        content: "{{ nodepool.private_ipv4 }}"
+
+    - name: Copy ssh keys to nodepool directory
+      command: "cp .ssh/{{ item }} /etc/nodepool/{{ item }}"
+      with_items:
+        - id_rsa
+        - id_rsa.pub

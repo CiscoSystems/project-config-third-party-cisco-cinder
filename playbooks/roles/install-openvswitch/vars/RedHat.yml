@@ -1,0 +1,4 @@
+---
+ovs_package: "openvswitch"
+python3: "python3.7"
+python3pip: "python3-pip"

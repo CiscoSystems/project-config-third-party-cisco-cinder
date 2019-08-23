@@ -1,0 +1,15 @@
+---
+- include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Install OpenVSwitch
+  package: name={{ovs_package}} state=present
+  become: true
+
+- name: Ensure openvswitch running
+  service:
+    name: "{{ovs_package}}"
+    state: "started"
+    enabled: true
+  become: true
+
+
