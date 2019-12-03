@@ -25,10 +25,6 @@
         - "libvirt-bin"
         - "libvirt-dev"
 
-    - name: Install mySQL for python
-      pip:
-        name: mysqlclient
-
     - name: Install paramiko for python
       pip:
         name: paramiko
