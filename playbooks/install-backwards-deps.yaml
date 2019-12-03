@@ -29,11 +29,6 @@
       pip:
         name: paramiko
 
-    - name: Install mySQL for python3
-      pip:
-        name: mysqlclient
-        executable: pip3
-
     - name: Install paramiko for python3
       pip:
         name: paramiko
