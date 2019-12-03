@@ -43,8 +43,6 @@
       shell: /usr/bin/python3.7 -m pip install paramiko
     - name: Install storops for python3.7
       shell: /usr/bin/python3.7 -m pip install storops
-    - name: Install mysqlclient for python3.7
-      shell: /usr/bin/python3.7 -m pip install mysqlclient
 
 - hosts: primary
   tasks:
