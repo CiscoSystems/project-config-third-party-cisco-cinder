@@ -21,7 +21,6 @@
         name: "{{ item }}"
       with_items:
         - "qemu-system"
-        - "libvirt-bin"
         - "libvirt-dev"
 
     - name: Install paramiko for python
