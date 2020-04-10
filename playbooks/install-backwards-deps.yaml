@@ -11,6 +11,7 @@
         name: "{{ item }}"
       with_items:
         - "python-dev"
+        - "python3.6-dev"
         - "python3.7-dev"
         - "python3-pip"
         - "python3-setuptools"
@@ -21,7 +22,9 @@
         name: "{{ item }}"
       with_items:
         - "qemu-system"
+        - "libvirt-bin"
         - "libvirt-dev"
+
     - name: Install paramiko for python
       pip:
         name: paramiko
