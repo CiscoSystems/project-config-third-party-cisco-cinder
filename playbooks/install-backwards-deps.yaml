@@ -10,9 +10,8 @@
       package:
         name: "{{ item }}"
       with_items:
-        - "python-dev"
-        - "python3.6-dev"
-        - "python3.7-dev"
+        - "python3.8-dev"
+        - "python3.8-minimal"
         - "python3-pip"
         - "python3-setuptools"
         - "libmysqlclient-dev"
@@ -21,6 +20,9 @@
       package:
         name: "{{ item }}"
       with_items:
+        - "qemu-kvm"
+        - "libvirt-daemon-system "
+        - "libvirt-clients"
         - "qemu-system"
         - "libvirt-bin"
         - "libvirt-dev"
@@ -44,12 +46,12 @@
         name: psutil
         executable: pip3
 
-    - name: Install paramiko for python3.7
-      shell: /usr/bin/python3.7 -m pip install paramiko
-    - name: Install storops for python3.7
-      shell: /usr/bin/python3.7 -m pip install storops
-    - name: Install psutil for python3.7
-      shell: /usr/bin/python3.7 -m pip install psutil
+    - name: Install paramiko for python3.8
+      shell: /usr/bin/python3.8 -m pip install paramiko
+    - name: Install storops for python3.8
+      shell: /usr/bin/python3.8 -m pip install storops
+    - name: Install psutil for python3.8
+      shell: /usr/bin/python3.8 -m pip install psutil
 
 - hosts: primary
   tasks:
