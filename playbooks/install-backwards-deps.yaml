@@ -22,12 +22,8 @@
         - "libvirt-daemon-system "
         - "libvirt-clients"
         - "qemu-system"
-        - "libvirt-bin"
         - "libvirt-dev"
 
-    - name: Install paramiko for python
-      pip:
-        name: paramiko
 
     - name: Install uwsgi for python3
       pip:
