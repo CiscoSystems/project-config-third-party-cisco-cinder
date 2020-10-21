@@ -31,6 +31,7 @@ devstack_gate_env_base:
 
 zuulv3_env_overrides:
   WORKSPACE: "/home/ubuntu"
+  ANSIBLE_VERSION: '2.10.1'
 zuulv3_devstack_gate_env_base: "{{ zuul | zuul_legacy_vars }}"
 zuulv3_devstack_gate_env: "{{ zuulv3_devstack_gate_env_base | combine(zuulv3_env_overrides) }}"
 
