@@ -39,6 +39,8 @@
       shell: /usr/bin/python3.8 -m pip install paramiko
     - name: Install storops for python3.8
       shell: /usr/bin/python3.8 -m pip install storops
+    - name: Install python3-dev 
+      shell: sudo apt-get install python3-dev
 - hosts: primary
   tasks:
     - name: git clone devstack gate
