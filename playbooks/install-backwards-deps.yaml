@@ -13,16 +13,12 @@
         state: link
     - name: Install pip
       shell: sudo python3.8 -m easy_install pip    
-    - name: Install upgrade pip setuptools wheel
-      shell: python3.8 -m pip install --upgrade pip setuptools wheel --use-feature=2020-resolver
     - name: Install python and mySQL deps
       package:
         name: "{{ item }}"
       with_items:
         - "python3-dev"
         - "python3-pip"
-        - "python3-setuptools"
-        - "libmysqlclient-dev"
 
     - name: Install qemu service
       package:
