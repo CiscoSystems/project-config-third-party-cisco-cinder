@@ -24,15 +24,6 @@
         - "qemu-system"
         - "libvirt-dev"
 
-#    - name: Install uwsgi for python3
-#      pip:
-#      name: uwsgi
-#      executable: pip3
-    - name: Install psutil for python3
-      pip:
-        name: psutil
-        executable: pip3
-
     - name: Install paramiko for python3
       pip:
         name: paramiko
@@ -48,12 +39,6 @@
       shell: /usr/bin/python3.8 -m pip install paramiko
     - name: Install storops for python3.8
       shell: /usr/bin/python3.8 -m pip install storops
-    - name: Install psutil for python3.8
-      shell: /usr/bin/python3.8 -m pip install psutil
-    - name: Remove uwsgi for python3.8
-      shell: /usr/bin/python3.8 -m pip uninstall uwsgi
-    - name: Install uwsgi for python3.8
-      shell: /usr/bin/python3.8 -m pip install uwsgi
 - hosts: primary
   tasks:
     - name: git clone devstack gate
