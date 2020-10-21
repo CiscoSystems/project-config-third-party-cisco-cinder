@@ -33,7 +33,10 @@
         - "libvirt-clients"
         - "qemu-system"
         - "libvirt-dev"
-
+    - name: Install virtualenv for python3
+      pip:
+        name: virtualenv
+        executable: pip
     - name: Install paramiko for python3
       pip:
         name: paramiko
