@@ -24,10 +24,13 @@
         - "qemu-system"
         - "libvirt-dev"
 
-
-    - name: Install uwsgi for python3
+#    - name: Install uwsgi for python3
+#      pip:
+#      name: uwsgi
+#      executable: pip3
+    - name: Install psutil for python3
       pip:
-        name: uwsgi
+        name: psutil
         executable: pip3
 
     - name: Install paramiko for python3
@@ -40,10 +43,6 @@
         name: storops
         executable: pip3
 
-    - name: Install psutil for python3
-      pip:
-        name: psutil
-        executable: pip3
 
     - name: Install paramiko for python3.8
       shell: /usr/bin/python3.8 -m pip install paramiko
