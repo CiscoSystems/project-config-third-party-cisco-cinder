@@ -6,6 +6,15 @@
       apt: 
         name: python3-pip 
         state: absent
+    - name: Create symbolic link
+      file:
+        src: "/usr/bin/python3"
+        dest: "/usr/bin/python"
+        state: link
+    - name: Install pip
+      shell: sudo python3.8 -m easy_install pip    
+    - name: Install upgrade pip setuptools wheel
+      shell: python3.8 -m pip install --upgrade pip setuptools wheel --use-feature=2020-resolver
     - name: Install python and mySQL deps
       package:
         name: "{{ item }}"
@@ -36,16 +45,11 @@
         executable: pip3
 
 
-    - name: Install paramiko for python3.8
-      shell: /usr/bin/python3.8 -m pip install paramiko
-    - name: Install storops for python3.8
-      shell: /usr/bin/python3.8 -m pip install storops
+#    - name: Install paramiko for python3.8
+#      shell: /usr/bin/python3.8 -m pip install paramiko
+#    - name: Install storops for python3.8
+#      shell: /usr/bin/python3.8 -m pip install storops
 
-    - name: Create symbolic link 
-      file:
-        src: "/usr/bin/python3"
-        dest: "/usr/bin/python"
-        state: link
 - hosts: primary
   tasks:
     - name: git clone devstack gate
