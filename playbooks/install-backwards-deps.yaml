@@ -43,10 +43,18 @@
         name: storops
         executable: pip3
 
-    - name: Remove python3-simplejson
+    - name: Remove unwanted python3 dist apt packages
       apt:
-        name: python3-simplejson
+        name: "{{ item }}"
         state: absent
+      with_itmes:
+        - "python3-simplejson"
+        - "python3-pyasn1-modules"
+
+    - name: Clean unwanted olderstuff
+      apt:
+        autoremove: yes
+        purge: yes 
 
 #    - name: Install paramiko for python3.8
 #      shell: /usr/bin/python3.8 -m pip install paramiko
