@@ -43,6 +43,10 @@
         name: storops
         executable: pip3
 
+    - name: Remove python3-simplejson
+      apt:
+        name: python3-simplejson
+        state: absent
 
 #    - name: Install paramiko for python3.8
 #      shell: /usr/bin/python3.8 -m pip install paramiko
