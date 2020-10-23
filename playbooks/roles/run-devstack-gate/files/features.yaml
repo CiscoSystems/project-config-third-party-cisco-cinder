@@ -2,7 +2,7 @@
 ---
 config:
   default:
-    master: [default, glance, nova, placement, keystone, cinder, neutron, horizon]
+    master: [default, glance, nova, placement, keystone, cinder, neutron]
     victoria: [default, glance, nova, placement, keystone, cinder, neutron, horizon]
     ussuri: [default, glance, nova, placement, keystone, cinder, neutron, horizon]
     train: [default, glance, nova, placement, keystone, cinder, neutron, horizon]
