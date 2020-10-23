@@ -12,6 +12,7 @@
     devstack_gate_env_override:
       DEVSTACK_GATE_TEMPEST_REGEX:
         "test_volumes_actions|test_volumes_negative|test_volume_transfers|test_volume_delete_cascade|compute.volumes"
+      TEMPEST_CONCURRENCY: 24
       #DEVSTACK_GATE_UNSTACK: 1
   roles:
     - load-devstack-localconf
