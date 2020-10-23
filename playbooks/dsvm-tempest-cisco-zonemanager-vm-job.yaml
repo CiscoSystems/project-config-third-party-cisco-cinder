@@ -11,7 +11,7 @@
     devstack_local_conf_src: templates/zm_vm_cinder_local_conf.j2
     devstack_gate_env_override:
       DEVSTACK_GATE_TEMPEST_REGEX:
-        "AttachVolumeTestJSON.test_attach_detach_volum"
+        "test_volumes_actions|test_volumes_negative|test_volume_transfers|test_volume_delete_cascade|compute.volumes"
       #DEVSTACK_GATE_UNSTACK: 1
   roles:
     - load-devstack-localconf
