@@ -19,8 +19,8 @@
         src: "/usr/bin/python3.7"
         dest: "/usr/bin/python"
         state: link
-    - name: Install pip
-      shell: sudo python3.7 -m easy_install pip
+#    - name: Install pip
+#      shell: sudo python3.7 -m easy_install pip
     - name: Install qemu service
       package:
         name: "{{ item }}"
