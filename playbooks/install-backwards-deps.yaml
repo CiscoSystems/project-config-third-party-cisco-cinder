@@ -55,10 +55,10 @@
 #        name: python3-pyasn1-modules
 #        state: absent
 
-    - name: Clean unwanted olderstuff
-      apt:
-        autoremove: yes
-        purge: yes 
+#    - name: Clean unwanted olderstuff
+#      apt:
+#        autoremove: yes
+#        purge: yes 
 
 #    - name: Install paramiko for python3.8
 #      shell: /usr/bin/python3.8 -m pip install paramiko
