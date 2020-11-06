@@ -15,6 +15,7 @@
         - "python3.7-minimal"
         - "python3-pip"
         - "python-pip"
+        - "python3-setuptools"
     - name: Create symbolic link
       file:
         src: "/usr/bin/python3.7"
