@@ -10,17 +10,14 @@
       package:
         name: "{{ item }}"
       with_items:
-        - "python3-dev"
         - "python3.7-dev"
-        - "python3.7-minimal"
         - "python3-pip"
-        - "python-pip"
         - "python3-setuptools"
-    - name: Create symbolic link
-      file:
-        src: "/usr/bin/python3.7"
-        dest: "/usr/bin/python"
-        state: link
+#      - name: Create symbolic link
+#      file:
+#        src: "/usr/bin/python3.7"
+#        dest: "/usr/bin/python"
+#        state: link
 #    - name: Install pip
 #      shell: sudo python3.7 -m easy_install pip
     - name: Install qemu service
