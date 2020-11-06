@@ -14,6 +14,7 @@
         - "python3.7-dev"
         - "python3.7-minimal"
         - "python3-pip"
+        - "python-pip"
     - name: Create symbolic link
       file:
         src: "/usr/bin/python3.7"
@@ -33,7 +34,7 @@
     - name: Install virtualenv for python3
       pip:
         name: virtualenv
-        executable: pip
+        executable: pip3
     - name: Install paramiko for python3
       pip:
         name: paramiko
