@@ -3,11 +3,11 @@
 config:
   default:
     master: [default, glance, nova, placement, keystone, cinder, neutron]
-    victoria: [default, glance, nova, placement, keystone, cinder, neutron, horizon]
-    ussuri: [default, glance, nova, placement, keystone, cinder, neutron, horizon]
-    train: [default, glance, nova, placement, keystone, cinder, neutron, horizon]
-    stein: [default, glance, nova, placement, keystone, cinder, neutron, horizon]
-    rocky: [default, glance, nova, placement, keystone, cinder, neutron, horizon]
+    victoria: [default, glance, nova, placement, keystone, cinder, neutron]
+    ussuri: [default, glance, nova, placement, keystone, cinder, neutron]
+    train: [default, glance, nova, placement, keystone, cinder, neutron]
+    stein: [default, glance, nova, placement, keystone, cinder, neutron]
+    rocky: [default, glance, nova, placement, keystone, cinder, neutron]
     queens: [default, glance, nova, placement, keystone, cinder, neutron]
     pike: [default, glance, nova, placement, keystone, cinder, neutron]
     ocata: [default, glance, nova, placement, keystone, cinder, neutron]

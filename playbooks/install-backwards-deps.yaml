@@ -51,11 +51,16 @@
 #      apt:
 #        name: python3-pyasn1-modules
 #        state: absent
-
-#    - name: Clean unwanted olderstuff
-#      apt:
-#        autoremove: yes
-#        purge: yes 
+    - name: Update and upgrade apt packages
+      become: true
+      apt:
+        upgrade: no
+        update_cache: yes
+        cache_valid_time: 86400 #One day
+    - name: Clean unwanted olderstuff
+      apt:
+        autoremove: yes
+        purge: yes 
 
 #    - name: Install paramiko for python3.8
 #      shell: /usr/bin/python3.8 -m pip install paramiko
