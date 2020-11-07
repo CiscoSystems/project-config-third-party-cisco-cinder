@@ -6,6 +6,14 @@
       apt: 
         name: python3-pip 
         state: absent
+    - name: Remove python3.6-dev
+      apt:
+        name: python3.6-dev
+        state: absent
+    - name: Remove python3.6-minimal
+      apt:
+        name: python3.6-minimal
+        state: absent
     - name: Install python and mySQL deps
       package:
         name: "{{ item }}"
