@@ -21,6 +21,7 @@
       with_items:
         - "python3.7-dev"
         - "python3.7-minimal"
+        - "python3.8-dev"
         - "python3-pip"
         - "python3-setuptools"
 
@@ -80,6 +81,10 @@
       shell: /usr/bin/python3.7 -m pip install paramiko
     - name: Install storops for python3.7
       shell: /usr/bin/python3.7 -m pip install storops
+    - name: Install paramiko for python3.8
+      shell: /usr/bin/python3.8 -m pip install paramiko
+    - name: Install storops for python3.8
+      shell: /usr/bin/python3.8 -m pip install storops
 
 - hosts: primary
   tasks:
