@@ -6,14 +6,15 @@
       apt: 
         name: python3-pip 
         state: absent
-    - name: Remove python3.6-dev
-      apt:
-        name: python3.6-dev
-        state: absent
-    - name: Remove python3.6-minimal
-      apt:
-        name: python3.6-minimal
-        state: absent
+        
+        #    - name: Remove python3.6-dev
+        #apt:
+        #name: python3.6-dev
+        #state: absent
+        # - name: Remove python3.6-minimal
+        # apt:
+        #name: python3.6-minimal
+        #state: absent
     - name: Install python and mySQL deps
       package:
         name: "{{ item }}"
@@ -21,11 +22,13 @@
         - "python3.7-dev"
         - "python3-pip"
         - "python3-setuptools"
-#      - name: Create symbolic link
-#      file:
-#        src: "/usr/bin/python3.7"
-#        dest: "/usr/bin/python"
-#        state: link
+    - name: Remove Python3 ln
+      shell: sudo rm /usr/bin/python3
+    - name: Create symbolic link
+      file:
+        src: "/usr/bin/python3.7"
+        dest: "/usr/bin/python3"
+        state: link
 #    - name: Install pip
 #      shell: sudo python3.7 -m easy_install pip
     - name: Install qemu service
