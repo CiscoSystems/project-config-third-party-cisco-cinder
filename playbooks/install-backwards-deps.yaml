@@ -20,15 +20,18 @@
         name: "{{ item }}"
       with_items:
         - "python3.7-dev"
+        - "python3.7-minimal"
         - "python3-pip"
         - "python3-setuptools"
-    - name: Remove Python3 ln
-      shell: sudo rm /usr/bin/python3
-    - name: Create symbolic link
-      file:
-        src: "/usr/bin/python3.7"
-        dest: "/usr/bin/python3"
-        state: link
+
+          #    - name: Remove Python3 ln
+          #shell: sudo rm /usr/bin/python3
+
+          #- name: Create symbolic link
+          #file:
+          #src: "/usr/bin/python3.7"
+          #dest: "/usr/bin/python3"
+          #state: link
 #    - name: Install pip
 #      shell: sudo python3.7 -m easy_install pip
     - name: Install qemu service
@@ -73,10 +76,10 @@
         autoremove: yes
         purge: yes 
 
-#    - name: Install paramiko for python3.8
-#      shell: /usr/bin/python3.8 -m pip install paramiko
-#    - name: Install storops for python3.8
-#      shell: /usr/bin/python3.8 -m pip install storops
+    - name: Install paramiko for python3.7
+      shell: /usr/bin/python3.7 -m pip install paramiko
+    - name: Install storops for python3.7
+      shell: /usr/bin/python3.7 -m pip install storops
 
 - hosts: primary
   tasks:
