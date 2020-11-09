@@ -27,14 +27,14 @@
           #apt:
           #name: python3.6-dev
           #state: absent
-    - name: Remove python3.6-minimal
+          #- name: Remove python3.6-minimal
+          #apt:
+          #name: python3.6-minimal
+          #state: absent
+    - name: apt autoremove
       apt:
-        name: python3.6-minimal
-        state: absent
-        #- name: apt autoremove
-        #apt:
-        #autoremove: yes
-        #purge: yes
+        autoremove: yes
+        purge: yes
 
           #    - name: Remove Python3 ln
           #shell: sudo rm /usr/bin/python3
