@@ -6,15 +6,26 @@
       apt: 
         name: python3-pip 
         state: absent
-        
-        #    - name: Remove python3.6-dev
-        #apt:
-        #name: python3.6-dev
-        #state: absent
-        # - name: Remove python3.6-minimal
-        # apt:
-        #name: python3.6-minimal
-        #state: absent
+    - name: Remove apache2
+      apt:
+        name: apache2
+        state: absent
+    - name: Remove libapache2-mod-wsgi-py3
+      apt:
+        name: libapache2-mod-wsgi-py3
+        state: absent
+    - name: Remove python3.6-dev
+      apt:
+        name: python3.6-dev
+        state: absent
+    - name: Remove python3.6-minimal
+        apt:
+        name: python3.6-minimal
+        state: absent
+    - name: apt autoremove
+      apt:
+        autoremove: yes
+        purge: yes
     - name: Install python and mySQL deps
       package:
         name: "{{ item }}"
@@ -22,8 +33,9 @@
         - "python3.7-dev"
         - "python3.7-minimal"
         - "python3.8-dev"
+        - "python3.8-minimal"
         - "python3-pip"
-        - "python3-setuptools"
+          #- "python3-setuptools"
 
           #    - name: Remove Python3 ln
           #shell: sudo rm /usr/bin/python3
@@ -85,7 +97,10 @@
       shell: /usr/bin/python3.8 -m pip install paramiko
     - name: Install storops for python3.8
       shell: /usr/bin/python3.8 -m pip install storops
-
+    - name: Install mod_wsgi for python3.7
+      shell: /usr/bin/python3.7 -m pip install mod_wsgi
+    - name: Install mod_wsgi for python3.8
+      shell: /usr/bin/python3.8 -m pip install mod_wsgi
 - hosts: primary
   tasks:
     - name: git clone devstack gate
