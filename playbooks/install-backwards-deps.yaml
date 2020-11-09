@@ -71,9 +71,9 @@
         name: storops
         executable: pip3
     - name: Install mod_wsgi
-     pip:
-       name: mod_wsgi
-       executable: pip3
+      pip:
+        name: mod_wsgi
+        executable: pip3
 #    - name: Remove python3 dist apt pkg python3-simplejson
 #      apt:
 #        name: python3-simplejson
