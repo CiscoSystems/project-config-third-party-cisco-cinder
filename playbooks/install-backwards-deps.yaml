@@ -23,18 +23,18 @@
         - "python3.8-dev"
         - "python3.8-minimal"
         - "python3-pip"
-    - name: Remove python3.6-dev
-      apt:
-        name: python3.6-dev
-        state: absent
+          #    - name: Remove python3.6-dev
+          #apt:
+          #name: python3.6-dev
+          #state: absent
     - name: Remove python3.6-minimal
       apt:
         name: python3.6-minimal
         state: absent
-    - name: apt autoremove
-      apt:
-        autoremove: yes
-        purge: yes
+        #- name: apt autoremove
+        #apt:
+        #autoremove: yes
+        #purge: yes
 
           #    - name: Remove Python3 ln
           #shell: sudo rm /usr/bin/python3
