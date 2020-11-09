@@ -57,6 +57,7 @@
         - "qemu-system"
         - "libvirt-dev"
         - "libapache2-mod-wsgi-py3"
+        - "uwsgi"
     - name: Install virtualenv for python3
       pip:
         name: virtualenv
@@ -70,10 +71,10 @@
       pip:
         name: storops
         executable: pip3
-    - name: Install mod_wsgi
-      pip:
-        name: mod_wsgi
-        executable: pip3
+#     - name: Install mod_wsgi
+#      pip:
+#        name:  mod_wsgi-httpd
+#        executable: pip3
 #    - name: Remove python3 dist apt pkg python3-simplejson
 #      apt:
 #        name: python3-simplejson
@@ -101,10 +102,10 @@
       shell: /usr/bin/python3.8 -m pip install paramiko
     - name: Install storops for python3.8
       shell: /usr/bin/python3.8 -m pip install storops
-    - name: Install mod_wsgi for python3.7
-      shell: /usr/bin/python3.7 -m pip install mod_wsgi
-    - name: Install mod_wsgi for python3.8
-      shell: /usr/bin/python3.8 -m pip install mod_wsgi
+      #- name: Install mod_wsgi for python3.7
+      #shell: /usr/bin/python3.7 -m pip install mod_wsgi
+      # - name: Install mod_wsgi for python3.8
+      #shell: /usr/bin/python3.8 -m pip install mod_wsgi
 - hosts: primary
   tasks:
     - name: git clone devstack gate
