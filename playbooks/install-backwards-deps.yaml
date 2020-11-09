@@ -14,6 +14,15 @@
       apt:
         name: libapache2-mod-wsgi-py3
         state: absent
+    - name: Install python and mySQL deps
+      package:
+        name: "{{ item }}"
+      with_items:
+        - "python3.7-dev"
+        - "python3.7-minimal"
+        - "python3.8-dev"
+        - "python3.8-minimal"
+        - "python3-pip"
     - name: Remove python3.6-dev
       apt:
         name: python3.6-dev
@@ -26,16 +35,6 @@
       apt:
         autoremove: yes
         purge: yes
-    - name: Install python and mySQL deps
-      package:
-        name: "{{ item }}"
-      with_items:
-        - "python3.7-dev"
-        - "python3.7-minimal"
-        - "python3.8-dev"
-        - "python3.8-minimal"
-        - "python3-pip"
-          #- "python3-setuptools"
 
           #    - name: Remove Python3 ln
           #shell: sudo rm /usr/bin/python3
