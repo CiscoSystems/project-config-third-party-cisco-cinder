@@ -19,7 +19,7 @@
         name: python3.6-dev
         state: absent
     - name: Remove python3.6-minimal
-        apt:
+      apt:
         name: python3.6-minimal
         state: absent
     - name: apt autoremove
