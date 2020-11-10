@@ -13,10 +13,16 @@
   when: hostvars[inventory_hostname].nodepool is not defined
   become: true
 
-#- name: Copy custom gate hooks into workspace
-#  template:
-#    src: custom_devstack_gate_hook
-#    dest: "{{ workspace }}/custom_devstack_gate_hook"
+- name: Copy custom gate hooks into workspace
+  template:
+    src: custom_devstack_gate_hook
+    dest: "{{ workspace }}/custom_devstack_gate_hook"
+  register: command_result
+  ignore_errors: True
+
+- name: Set flag
+  set_fact: flag = failed
+  when: "'FAILED' in command_result.stderr"  
 
 - name: Copy devstack gate to devstack gate safe
   copy:
@@ -70,3 +76,6 @@
   args:
     chdir: "{{ workspace }}"
   command: "./safe-devstack-vm-gate-wrap.sh"
+
+- fail: msg="The execution has failed because of errors"
+  when: flag == "failed"
