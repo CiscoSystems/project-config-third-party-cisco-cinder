@@ -1,4 +1,7 @@
 ---
+- name: Set flag
+  set_fact: flag = 'SUCCESS'
+
 - name: Ensure /etc/nodepool exists
   file:
     path: /etc/nodepool
@@ -20,7 +23,7 @@
   register: command_result
   ignore_errors: True
 
-- name: Set flag
+- name: Set flag if custom_devstack_gate_hook failed
   set_fact: flag = failed
   when: "'FAILED' in command_result"  
 
