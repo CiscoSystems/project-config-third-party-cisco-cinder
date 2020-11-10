@@ -22,7 +22,7 @@
 
 - name: Set flag
   set_fact: flag = failed
-  when: "'FAILED' in command_result.stderr"  
+  when: "'FAILED' in command_result"  
 
 - name: Copy devstack gate to devstack gate safe
   copy:
@@ -81,6 +81,7 @@
 - name: Set devstack gate job flag
   set_fact: flag = failed
   when: "'FAILED' in devstack_gate.stderr"
+  ignore_errors: True
 
 - fail: msg="The execution has failed because of errors"
   when: flag == "failed"
