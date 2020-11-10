@@ -86,5 +86,3 @@
   when: "'FAILED' in devstack_gate.stderr"
   ignore_errors: True
 
-- fail: msg="The execution has failed because of errors"
-  when: flag == "failed"
