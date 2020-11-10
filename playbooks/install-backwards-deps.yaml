@@ -6,108 +6,21 @@
       apt: 
         name: python3-pip 
         state: absent
-    - name: Remove apache2
-      apt:
-        name: apache2
-        state: absent
-    - name: Remove libapache2-mod-wsgi-py3
-      apt:
-        name: libapache2-mod-wsgi-py3
-        state: absent
     - name: Install python and mySQL deps
       package:
         name: "{{ item }}"
       with_items:
-        - "python3.7-dev"
-        - "python3.7-minimal"
-        - "python3.8-dev"
-        - "python3.8-minimal"
+        - "python-dev"
         - "python3-pip"
         - "python3-setuptools"
-        - "python3.7-venv"
-        - "python3.8-venv"
-          #    - name: Remove python3.6-dev
-          #apt:
-          #name: python3.6-dev
-          #state: absent
-          #- name: Remove python3.6-minimal
-          #apt:
-          #name: python3.6-minimal
-          #state: absent
-    - name: apt autoremove
-      apt:
-        autoremove: yes
-        purge: yes
-
-          #    - name: Remove Python3 ln
-          #shell: sudo rm /usr/bin/python3
-
-          #- name: Create symbolic link
-          #file:
-          #src: "/usr/bin/python3.7"
-          #dest: "/usr/bin/python3"
-          #state: link
-#    - name: Install pip
-#      shell: sudo python3.7 -m easy_install pip
-    - name: Install qemu service
-      package:
-        name: "{{ item }}"
-      with_items:
-        - "qemu-kvm"
-        - "libvirt-daemon-system "
-        - "libvirt-clients"
-        - "qemu-system"
-        - "libvirt-dev"
-        - "libapache2-mod-wsgi-py3"
-        - "uwsgi"
-    - name: Install virtualenv for python3
-      pip:
-        name: virtualenv
-        executable: pip3
-    - name: Install paramiko for python3
-      pip:
-        name: paramiko
-        executable: pip3
 
     - name: Install storops for python3
       pip:
         name: storops
         executable: pip3
-#     - name: Install mod_wsgi
-#      pip:
-#        name:  mod_wsgi-httpd
-#        executable: pip3
-#    - name: Remove python3 dist apt pkg python3-simplejson
-#      apt:
-#        name: python3-simplejson
-#        state: absent
-#    - name: Remove dist apt package python3-pyasn1-modules
-#      apt:
-#        name: python3-pyasn1-modules
-#        state: absent
-    - name: Update and upgrade apt packages
-      become: true
-      apt:
-        upgrade: no
-        update_cache: yes
-        cache_valid_time: 86400 #One day
-    - name: Clean unwanted olderstuff
-      apt:
-        autoremove: yes
-        purge: yes 
 
-    - name: Install paramiko for python3.7
-      shell: /usr/bin/python3.7 -m pip install paramiko
-    - name: Install storops for python3.7
-      shell: /usr/bin/python3.7 -m pip install storops
-    - name: Install paramiko for python3.8
-      shell: /usr/bin/python3.8 -m pip install paramiko
-    - name: Install storops for python3.8
-      shell: /usr/bin/python3.8 -m pip install storops
-      #- name: Install mod_wsgi for python3.7
-      #shell: /usr/bin/python3.7 -m pip install mod_wsgi
-      # - name: Install mod_wsgi for python3.8
-      #shell: /usr/bin/python3.8 -m pip install mod_wsgi
+      #- name: Install storops for python3.8
+      #shell: /usr/bin/python3.8 -m pip install storops
 - hosts: primary
   tasks:
     - name: git clone devstack gate
