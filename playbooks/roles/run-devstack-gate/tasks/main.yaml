@@ -79,10 +79,5 @@
   args:
     chdir: "{{ workspace }}"
   command: "./safe-devstack-vm-gate-wrap.sh"
-  ignore_errors: True
 
-- name: Set devstack gate job flag
-  set_fact: flag = failed
-  when: "'FAILED' in devstack_gate.stderr"
-  ignore_errors: True
 
