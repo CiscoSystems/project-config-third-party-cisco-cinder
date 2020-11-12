@@ -80,17 +80,3 @@
     chdir: "{{ workspace }}"
   command: "./safe-devstack-vm-gate-wrap.sh"
 
-- name: Secure local conf file
-  replace:
-    path: /opt/stack/new/devtsack/local.conf
-    regexp: "^{{ item }}=.*$"
-    replace: "{{ item }}=*************"
-  with_items:
-    - 'san_ip'
-    - 'san_login'
-    - 'san_password'
-    - 'cisco_fc_fabric_address'
-    - 'cisco_fc_fabric_user'
-    - 'cisco_fc_fabric_password'
-    - 'cisco_fc_fabric_port'
-  ignore_errors: True
