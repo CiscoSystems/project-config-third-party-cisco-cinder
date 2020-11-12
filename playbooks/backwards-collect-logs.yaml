@@ -2,9 +2,23 @@
 ---
 - hosts: primary
   tasks:
-    - name: Secure local conf file
+    - name: Encrypt credentials in local conf file
       replace:
         path: /opt/stack/new/devstack/local.conf
+        regexp: "^{{ item }}=.*$"
+        replace: "{{ item }}=*************"
+      with_items:
+        - 'san_ip'
+        - 'san_login'
+        - 'san_password'
+        - 'cisco_fc_fabric_address'
+        - 'cisco_fc_fabric_user'
+        - 'cisco_fc_fabric_password'
+        - 'cisco_fc_fabric_port'
+
+    - name: Encrypt credentials in logs
+      replace:
+        path: '{{ ansible_user_dir }}/logs/local.conf'
         regexp: "^{{ item }}=.*$"
         replace: "{{ item }}=*************"
       with_items:
