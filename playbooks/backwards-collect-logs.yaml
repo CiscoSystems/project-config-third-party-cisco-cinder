@@ -4,7 +4,7 @@
   tasks:
     - name: Secure local conf file
       replace:
-        path: /opt/stack/new/devtsack/local.conf
+        path: /opt/stack/new/devstack/local.conf
         regexp: "^{{ item }}=.*$"
         replace: "{{ item }}=*************"
       with_items:
