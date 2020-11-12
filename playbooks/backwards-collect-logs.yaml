@@ -18,7 +18,7 @@
 
     - name: Encrypt credentials in logs
       replace:
-        path: '{{ ansible_user_dir }}/logs/local.conf'
+        path: '{{ ansible_user_dir }}/logs/local.conf.txt'
         regexp: "^{{ item }}=.*$"
         replace: "{{ item }}=*************"
       with_items:
