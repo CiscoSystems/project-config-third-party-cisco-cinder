@@ -37,9 +37,6 @@
     src: "/tmp/localconf_temp_decoded"
   register: localconf_data
 
-- debug:
-  msg: "{{ localconf_data['content'] | b64decode}}"
-
 - name: Set devstack_local_conf fact
   set_fact:
     devstack_local_conf: "{{ localconf_data['content'] | b64decode }}"
