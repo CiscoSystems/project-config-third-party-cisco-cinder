@@ -4,11 +4,42 @@
     src: "{{ devstack_local_conf_src }}"
     dest: "/tmp/localconf_temp"
 
-- name: Slurp in rendered local conf
+- name: Slurp in rendered source local conf
   slurp:
     src: "/tmp/localconf_temp"
   register: localconf_temp
 
+- name: Create temp local config file
+  copy:
+    dest: /tmp/localconf_temp_decoded
+    content: "{{ localconf_temp['content'] | b64decode | b64decode }}"
+
+- name: adding fabric ip
+  replace:
+    path: /tmp/localconf_temp_decoded
+    regexp: "^{{ item }}=.*$"
+    replace: "{{ item }}={{ mds_ip_mapping[hostvars['primary']['nodepool']['provider']] }}"
+  with_items:
+    - 'cisco_fc_fabric_address'
+  ignore_errors: True
+
+- name: adding storage ip file
+  replace:
+    path: /tmp/localconf_temp_decoded
+    regexp: "^{{ item }}=.*$"
+    replace: "{{ item }}={{ storage_ip_mapping[hostvars['primary']['nodepool']['provider']] }}"
+  with_items:
+    - 'san_ip'
+  ignore_errors: True
+
+- name: Slurp in rendered decoded local conf
+  slurp:
+    src: "/tmp/localconf_temp_decoded"
+  register: localconf_data
+
+- debug:
+  msg: "{{ localconf_data['content'] | b64decode}}"
+
 - name: Set devstack_local_conf fact
   set_fact:
-    devstack_local_conf: "{{ localconf_temp['content'] | b64decode | b64decode}}"
+    devstack_local_conf: "{{ localconf_data['content'] | b64decode }}"

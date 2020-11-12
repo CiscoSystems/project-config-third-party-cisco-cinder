@@ -8,7 +8,7 @@
     mds_ip_mapping:
       nodeprovider1: 173.39.89.130
       nodeprovider2: 173.39.89.143
-    emc_ip_mapping:
+    storage_ip_mapping:
       nodeprovider1: 173.39.89.142
       nodeprovider2: 173.39.89.142
     devstack_local_conf_src: templates/zm_vm_cinder_local_conf.j2
