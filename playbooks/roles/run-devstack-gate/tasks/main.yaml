@@ -48,6 +48,12 @@
     path: "/opt/stack/logs/"
   become: true
 
+- name: Create logs dir 
+  file:
+    path: "{{ workspace }}/logs"
+    state: directory
+    mode: 0777
+    
 - name: Create EOL branch patch file dir
   file:
     path: "{{ workspace }}/patches"
