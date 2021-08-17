@@ -19,4 +19,4 @@
       #DEVSTACK_GATE_UNSTACK: 1
   roles:
     - load-devstack-localconf
-    - run-devstack-gate
+    - run-devstack
