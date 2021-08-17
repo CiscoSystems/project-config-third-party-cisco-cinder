@@ -36,6 +36,11 @@
         name: python3-simplejson
         state: absent
 
+    - name: Remove python3 dist apt pkg python3-simplejson
+      apt:
+        name: pyasn1-modules
+        state: absent
+
       #- name: Install storops for python3.8
       #shell: /usr/bin/python3.8 -m pip install storops
 - hosts: primary
