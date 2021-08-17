@@ -40,22 +40,22 @@ devstack_gate_env: "{{ devstack_gate_env_base | combine(zuulv3_devstack_gate_env
 openstack_project_cherrypicks: {}
 
 # yamllint disable rule:line-length
-default_openstack_project_cherrypicks:
-  all:
-    devstack-gate:
-      - "https://review.opendev.org/openstack/devstack-gate refs/changes/26/530726/4"
-  mitaka:
-    devstack:
-      - "https://review.opendev.org/openstack/devstack refs/changes/94/561594/1"
-      - "https://review.opendev.org/openstack/devstack refs/changes/16/561416/3"
-    requirements:
-      - "{{workspace}}/patches/0001-Add-upper-constraint-for-setuptool-39-on-stable-newt.patch"
-  newton:
-    devstack:
-      - "https://review.opendev.org/openstack/devstack refs/changes/94/561594/1"
-      - "https://review.opendev.org/openstack/devstack refs/changes/16/561416/3"
-    requirements:
-      - "https://review.opendev.org/openstack/requirements refs/changes/69/555269/1"
+#default_openstack_project_cherrypicks:
+#  all:
+#    devstack-gate:
+#      - "https://review.opendev.org/openstack/devstack-gate refs/changes/26/530726/4"
+#  mitaka:
+#    devstack:
+#      - "https://review.opendev.org/openstack/devstack refs/changes/94/561594/1"
+#      - "https://review.opendev.org/openstack/devstack refs/changes/16/561416/3"
+#    requirements:
+#      - "{{workspace}}/patches/0001-Add-upper-constraint-for-setuptool-39-on-stable-newt.patch"
+#  newton:
+#    devstack:
+#      - "https://review.opendev.org/openstack/devstack refs/changes/94/561594/1"
+#      - "https://review.opendev.org/openstack/devstack refs/changes/16/561416/3"
+#    requirements:
+#      - "https://review.opendev.org/openstack/requirements refs/changes/69/555269/1"
 # yamllint enable
 
 run_devstack_gate_unstack: false
