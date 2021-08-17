@@ -19,13 +19,13 @@
         - "python3-dev"
         - "python3-pip"
         - "python3-setuptools"
-        - "python-dev"
+          #- "python-dev"
           
-          #- name: Create python bin symbolic link
-          #file:
-          #src: "/usr/bin/python3"
-          #dest: "/usr/bin/python"
-          #state: link
+    - name: Create python bin symbolic link
+      file:
+        src: "/usr/bin/python3"
+        dest: "/usr/bin/python"
+        state: link
     - name: Install storops for python3
       pip:
         name: storops
@@ -36,7 +36,7 @@
         name: python3-simplejson
         state: absent
 
-    - name: Remove python3 dist apt pkg python3-simplejson
+    - name: Remove pyasn1-modules
       apt:
         name: pyasn1-modules
         state: absent
