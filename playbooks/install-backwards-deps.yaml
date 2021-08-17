@@ -19,13 +19,13 @@
         - "python3-dev"
         - "python3-pip"
         - "python3-setuptools"
-        - "python-dev"
+          #- "python-dev"
           
-          #- name: Create python bin symbolic link
-          #file:
-          #src: "/usr/bin/python3"
-          #dest: "/usr/bin/python"
-          #state: link
+    - name: Create python bin symbolic link
+      file:
+        src: "/usr/bin/python3"
+        dest: "/usr/bin/python"
+        state: link
     - name: Install storops for python3
       pip:
         name: storops
