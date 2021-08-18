@@ -41,10 +41,9 @@
         #apt:
         #name: python3-simplejson
         #state: absent
-
-      - name: Install pip for python3
-        shell: /usr/bin/python3 -m easy_install pip
-        ignore_errors: True
+    - name: Install pip for python3
+      shell: /usr/bin/python3 -m easy_install pip
+      ignore_errors: True
 #- name: Install storops for python3.8
       #shell: /usr/bin/python3.8 -m pip install storops
       #    - name: Create symbolic link
