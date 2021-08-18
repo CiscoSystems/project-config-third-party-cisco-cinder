@@ -17,8 +17,8 @@
       package:
         name: "{{ item }}"
       with_items:
-        - "python-all-dev"
-        - "python-dev"
+        #- "python-all-dev"
+        #- "python-dev"
         - "python3-all-dev"
         - "python3-dev"
         - "python3-pip"
@@ -41,7 +41,8 @@
   tasks:
     - name: git clone devstack gate
       git:
-        repo: http://opendev.org/openstack/devstack-gate
+        #repo: http://opendev.org/openstack/devstack-gate
+        repo: http://github.com/akjayaku/devstack-gate.git
         dest: "{{ workspace }}/devstack-gate"
 
     - name: check existance of scripts directory
