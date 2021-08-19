@@ -22,7 +22,7 @@
         name: "{{ item }}"
       with_items:
         - "python-all-dev"
-        #- "python-dev"
+        - "python-dev"
         - "python3-all-dev"
         - "python3-dev"
         - "python3-pip"
