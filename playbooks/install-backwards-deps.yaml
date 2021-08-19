@@ -46,11 +46,11 @@
       ignore_errors: True
 #- name: Install storops for python3.8
       #shell: /usr/bin/python3.8 -m pip install storops
-      #    - name: Create symbolic link
-      #file:
-      #  src: "/usr/bin/python3"
-      #  dest: "/usr/bin/python"
-      #  state: link
+    - name: Create symbolic link
+      file:
+        src: "/usr/bin/python3"
+        dest: "/usr/bin/python"
+        state: link
     - name: Install virtualenv for python3
       pip:
         name: virtualenv
