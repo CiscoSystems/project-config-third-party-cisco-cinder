@@ -17,6 +17,7 @@
         dpkg_options: 'force-confold,force-confdef'
         cache_valid_time: 4600
       ignore_errors: True
+
     - name: Install python and mySQL deps
       package:
         name: "{{ item }}"
