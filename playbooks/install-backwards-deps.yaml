@@ -15,6 +15,11 @@
         name: python3.8
         state: absent
       ignore_errors: True
+
+    - name: apt autoremove
+      shell: sudo apt autoremove
+      ignore_errors: True
+
     - name: Update apt chache
       apt:
         upgrade: dist
@@ -23,14 +28,11 @@
         cache_valid_time: 4600
       ignore_errors: True
 
-
     - name: Install python and mySQL deps
       package:
         name: "{{ item }}"
       with_items:
-              #- "python-all-dev"
         - "python-dev"
-          #- "python3-all-dev"
         - "python3.9"
         - "python3.9-dev"
         - "python3-pip"
