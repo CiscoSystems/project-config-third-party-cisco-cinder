@@ -27,6 +27,7 @@
         - "python-dev"
           #- "python3-all-dev"
         - "python3.9"
+        - "python3.9-dev"
         - "python3-pip"
       ignore_errors: True
     - name: Install storops for python3
