@@ -16,8 +16,10 @@
         state: absent
       ignore_errors: True
 
-    - name: apt autoremove
-      shell: sudo apt autoremove
+    - name: Clean unwanted olderstuff
+      apt:
+        autoremove: yes
+        purge: yes
       ignore_errors: True
 
     - name: Update apt chache
@@ -33,8 +35,7 @@
         name: "{{ item }}"
       with_items:
         - "python-dev"
-        - "python3.9"
-        - "python3.9-dev"
+        - "python3-dev"
         - "python3-pip"
       ignore_errors: True
     - name: Install storops for python3
