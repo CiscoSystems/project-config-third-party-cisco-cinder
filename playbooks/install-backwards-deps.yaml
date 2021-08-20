@@ -10,6 +10,11 @@
       apt:
         name: ansible
         state: absent
+    - name: Remove python 3.8
+      apt:
+        name: python3.8
+        state: absent
+      ignore_errors: True
     - name: Update apt chache
       apt:
         upgrade: dist
