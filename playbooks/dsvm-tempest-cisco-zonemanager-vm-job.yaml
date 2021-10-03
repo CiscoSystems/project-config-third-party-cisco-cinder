@@ -8,9 +8,11 @@
     mds_ip_mapping:
       nodeprovider1: 173.39.89.130
       nodeprovider2: 173.39.89.143
+      nodeprovider11: 173.39.89.130
     storage_ip_mapping:
       nodeprovider1: 173.39.89.142
       nodeprovider2: 173.39.89.142
+      nodeprovider11: 173.39.89.142
     devstack_local_conf_src: templates/zm_vm_cinder_local_conf.j2
     devstack_gate_env_override:
       DEVSTACK_GATE_TEMPEST_REGEX:
