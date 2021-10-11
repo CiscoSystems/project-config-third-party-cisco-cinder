@@ -29,7 +29,6 @@
         dpkg_options: 'force-confold,force-confdef'
         cache_valid_time: 4600
       ignore_errors: True
-
     - name: Install python and mySQL deps
       package:
         name: "{{ item }}"
@@ -42,10 +41,11 @@
       pip:
         name: storops
         executable: pip3
-        #- name: Install ansible for python3
-        #pip:
-        #name: ansible
-        #executable: pip3
+    - name: Install pip-run
+      pip:
+        name: pip-run
+        executable: pip3
+      ignore_errors: True
         #    - name: Remove python3 dist apt pkg python3-simplejson
         #apt:
         #name: python3-simplejson
@@ -53,8 +53,9 @@
         #    - name: Install pip for python3
         #shell: /usr/bin/python3 -m easy_install pip
         #ignore_errors: True
-      #- name: Install storops for python3.8
-      #shell: /usr/bin/python3.8 -m pip install storops
+    - name: Install storops for python3.8
+      shell: sudo pip-run -q wheel 'setuptools<58' -- -m pip wheel suds-jurko
+      ignore_errors: True
       #- name: Create symbolic link
       #file:
       #  src: "/usr/bin/python3"
