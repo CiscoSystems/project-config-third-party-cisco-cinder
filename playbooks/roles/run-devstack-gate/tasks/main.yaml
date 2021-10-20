@@ -27,13 +27,6 @@
   #  set_fact: flag = failed
   #  when: "'FAILED' in command_result"  
 
-- name: Display test_matrix.py contents
-  command: cat /opt/stack/new/devstack-gate/roles/test-matrix/library/test_matrix.py
-  register: command_output
-
-- name: Print test_matrix.py to console
-  debug:
-    msg: "{{command_output.stdout}}"
 - name: Copy devstack gate to devstack gate safe
   copy:
     remote_src: true
