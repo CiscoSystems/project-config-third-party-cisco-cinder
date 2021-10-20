@@ -53,7 +53,7 @@
         #    - name: Install pip for python3
         #shell: /usr/bin/python3 -m easy_install pip
         #ignore_errors: True
-    - name: Install storops for python3.8
+    - name: Install setuptools<58 for python3
       shell: sudo pip-run -q wheel 'setuptools<58' -- -m pip wheel suds-jurko
       ignore_errors: True
       #- name: Create symbolic link
