@@ -56,6 +56,13 @@
     - name: Install setuptools<58 for python3
       shell: sudo pip-run -q wheel 'setuptools<58' -- -m pip wheel suds-jurko
       ignore_errors: True
+
+    - name: Install PyYAML5.4.1
+      pip:
+        name: PyYAML
+        version: 5.4.1
+        executable: pip3
+      ignore_errors: True
       #- name: Create symbolic link
       #file:
       #  src: "/usr/bin/python3"
