@@ -3,6 +3,7 @@
 config:
   default:
     master: [default, glance, nova, placement, keystone, cinder, neutron]
+    xena: [default, glance, nova, placement, keystone, cinder, neutron]
     wallaby: [default, glance, nova, placement, keystone, cinder, neutron]
     victoria: [default, glance, nova, placement, keystone, cinder, neutron]
     ussuri: [default, glance, nova, placement, keystone, cinder, neutron]
@@ -75,7 +76,7 @@ branches:
   # The value of ""default" is the name of the "trunk" branch
   default: master
   # Normalized branch names only here, e.g. stable/ocata => ocata
-  allowed: [master, wallaby, victoria, ussuri, train, stein, rocky, queens, pike, ocata, newton, mitaka, liberty, kilo]
+  allowed: [master, xena, wallaby, victoria, ussuri, train, stein, rocky, queens, pike, ocata, newton, mitaka, liberty, kilo]
 
 primary:
   default:
