@@ -5,5 +5,3 @@ Job list:
  - dsvm-tempest-cisco-zonemanager-job
 
 
-
-
