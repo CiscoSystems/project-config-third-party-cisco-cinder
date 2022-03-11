@@ -26,7 +26,6 @@
       - openstack/cinder
       - openstack/django_openstack_auth
       - openstack/glance
-      - openstack/glance_store
       - opendev/glean
       - openstack/grenade
       - openstack/heat
