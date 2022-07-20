@@ -78,6 +78,7 @@
       stat:
         path: "{{ workspace }}/devstack-gate/devstack-vm-gate-wrap.sh"
 
+
 - hosts: all
   roles:
     - role: fetch-zuul-cloner
