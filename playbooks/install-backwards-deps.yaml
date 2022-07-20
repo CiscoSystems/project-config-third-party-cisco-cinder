@@ -34,7 +34,7 @@
         name: "{{ item }}"
       with_items:
         - "python-dev"
-        - "python3-dev"
+        - "python3.9-dev"
         - "python3-pip"
       ignore_errors: True
     - name: Install storops for python3
@@ -51,32 +51,16 @@
         name: pip-run
         executable: pip3
       ignore_errors: True
-        #    - name: Remove python3 dist apt pkg python3-simplejson
-        #apt:
-        #name: python3-simplejson
-        #state: absent
-        #    - name: Install pip for python3
-        #shell: /usr/bin/python3 -m easy_install pip
-        #ignore_errors: True
-    - name: Install setuptools<58 for python3
-      shell: sudo pip-run -q wheel 'setuptools<58' -- -m pip wheel suds-jurko
-      ignore_errors: True
+    #- name: Install setuptools<58 for python3
+    #  shell: sudo pip-run -q wheel 'setuptools<58' -- -m pip wheel suds-jurko
+    #  ignore_errors: True
 
-    - name: Install PyYAML5.4.1
-      pip:
-        name: PyYAML
-        version: 5.4.1
-        executable: pip3
-      ignore_errors: True
-      #- name: Create symbolic link
-      #file:
-      #  src: "/usr/bin/python3"
-      #  dest: "/usr/bin/python"
-      #  state: link
-      #- name: Install virtualenv for python3
-      #pip:
-      #  name: virtualenv
-      #  executable: pip3
+    #- name: Install PyYAML5.4.1
+    #  pip:
+    #    name: PyYAML
+    #    version: 5.4.1
+    #    executable: pip3
+    #  ignore_errors: True
 
 - hosts: primary
   tasks:
