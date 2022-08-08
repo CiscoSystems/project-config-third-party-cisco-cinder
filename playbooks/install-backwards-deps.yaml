@@ -15,6 +15,16 @@
         dpkg_options: 'force-confold,force-confdef'
         cache_valid_time: 4600
       ignore_errors: True
+
+    - name: Install python and mySQL deps
+      package:
+        name: "{{ item }}"
+      with_items:
+        - "python-dev"
+        - "python3.9-dev"
+        - "python3-pip"
+      ignore_errors: True
+
     - name: Install storops for python3
       pip:
         name: storops
