@@ -2,20 +2,6 @@
 - hosts: all
   become: true
   tasks:
-    - name: Remove python3-pip
-      apt: 
-        name: python3-pip 
-        state: absent
-    - name: Remove ansible
-      apt:
-        name: ansible
-        state: absent
-    - name: Remove python 3.8
-      apt:
-        name: python3.8
-        state: absent
-      ignore_errors: True
-
     - name: Clean unwanted olderstuff
       apt:
         autoremove: yes
@@ -29,38 +15,10 @@
         dpkg_options: 'force-confold,force-confdef'
         cache_valid_time: 4600
       ignore_errors: True
-    - name: Install python and mySQL deps
-      package:
-        name: "{{ item }}"
-      with_items:
-        - "python-dev"
-        - "python3.9-dev"
-        - "python3-pip"
-      ignore_errors: True
     - name: Install storops for python3
       pip:
         name: storops
         executable: pip3
-    - name: Install psutil for python3
-      pip:
-        name: psutil
-        executable: pip3
-      ignore_errors: True
-    - name: Install pip-run
-      pip:
-        name: pip-run
-        executable: pip3
-      ignore_errors: True
-    #- name: Install setuptools<58 for python3
-    #  shell: sudo pip-run -q wheel 'setuptools<58' -- -m pip wheel suds-jurko
-    #  ignore_errors: True
-
-    #- name: Install PyYAML5.4.1
-    #  pip:
-    #    name: PyYAML
-    #    version: 5.4.1
-    #    executable: pip3
-    #  ignore_errors: True
 
 - hosts: primary
   tasks:
