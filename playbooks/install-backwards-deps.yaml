@@ -41,8 +41,8 @@
   tasks:
     - name: git clone devstack gate
       git:
-        #repo: http://opendev.org/openstack/devstack-gate
-        repo: http://github.com/akjayaku/devstack-gate.git
+        repo: http://opendev.org/openstack/devstack-gate
+        #repo: http://github.com/akjayaku/devstack-gate.git
         dest: "{{ workspace }}/devstack-gate"
 
     - name: check existance of scripts directory
