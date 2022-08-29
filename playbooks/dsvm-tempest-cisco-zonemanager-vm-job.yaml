@@ -17,7 +17,7 @@
     devstack_gate_env_override:
       DEVSTACK_GATE_TEMPEST_REGEX:
         "compute.volumes"
-      TEMPEST_CONCURRENCY: 24
+      TEMPEST_CONCURRENCY: 8
       #DEVSTACK_GATE_UNSTACK: 1
   roles:
     - load-devstack-localconf
