@@ -43,7 +43,6 @@
       - openstack/neutron-lbaas
       - openstack/neutron-vpnaas
       - openstack/nova
-      - openstack/octavia
       - openstack/os-apply-config
       - openstack/os-brick
       - openstack/os-client-config
