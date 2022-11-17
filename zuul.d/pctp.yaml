@@ -2,6 +2,6 @@
 - project:
     name: CiscoSystems/project-config-third-party-cisco-cinder
     queue: integrated
-    check:
+    jobtest:
       jobs:
         - dsvm-tempest-cisco-zonemanager-job
