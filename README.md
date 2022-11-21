@@ -1,4 +1,3 @@
-
 # project-config-third-party-cinder
 Jobs for Cinder third party CI 
 
