@@ -18,4 +18,4 @@
           nodes:
             - primary
     required-projects:
-      - c/openstack/cinder
+      - openstack/cinder
