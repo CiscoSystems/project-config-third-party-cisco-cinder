@@ -18,7 +18,6 @@
           nodes:
             - primary
     required-projects:
-      - zuul/zuul-jobs
       - openstack/devstack
       - openstack/devstack-gate
       - openstack/cinder
@@ -36,4 +35,3 @@
       - openstack/project-config
       - openstack/requirements
       - openstack/tempest
-
