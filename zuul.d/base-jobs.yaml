@@ -31,3 +31,4 @@
       - openstack/project-config
       - openstack/requirements
       - openstack/tempest
+      - openstack/tempest-lib
