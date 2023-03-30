@@ -32,3 +32,4 @@
       - openstack/requirements
       - openstack/tempest
       - openstack/tempest-lib
+      - openstack/grenade
