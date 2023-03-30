@@ -3,6 +3,7 @@
 config:
   default:
     master: [default, glance, nova, placement, keystone, cinder, neutron]
+    antelope: [default, glance, nova, placement, keystone, cinder, neutron]
     zed: [default, glance, nova, placement, keystone, cinder, neutron]
     yoga: [default, glance, nova, placement, keystone, cinder, neutron]
     xena: [default, glance, nova, placement, keystone, cinder, neutron]
