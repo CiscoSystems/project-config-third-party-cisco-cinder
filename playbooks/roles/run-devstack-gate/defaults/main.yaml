@@ -9,7 +9,6 @@ default_enabled_projects:
   - "openstack/placement"
   - "openstack/requirements"
   - "openstack/tempest"
-  - "openstack/tempest-lib"
 
 
 devstack_gate_env_override: {}
