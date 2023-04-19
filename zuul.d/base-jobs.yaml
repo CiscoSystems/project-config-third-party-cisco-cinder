@@ -28,7 +28,6 @@
       - openstack/neutron
       - openstack/nova
       - openstack/placement
-      - openstack/project-config
       - openstack/requirements
       - openstack/tempest
       - openstack/grenade
